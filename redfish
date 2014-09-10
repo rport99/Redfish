@@ -2,7 +2,7 @@
 
 clear
 
-echo "Redfish is an Autoupdater and an Autocleaner.,"
+echo "Redfish is an Autoupdater and an Autocleaner,"
 echo "Intended for use with Ubuntu\Debian and Arch"
 echo "This is a shell script written By The Seeker for The Cup Of Linux Community"  
 
