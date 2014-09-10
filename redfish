@@ -1,0 +1,78 @@
+#!/bin/bash
+
+clear
+
+echo "Redfish is an Autoupdater and an Autocleaner,"
+echo "Intended for use with Ubuntu\Debian and Arch"
+echo "This is a shell script written By The Seeker for The Cup Of Linux Community"  
+
+sleep 3
+
+echo Hello User
+echo Prepare to Input Password If Needed.
+sleep 3
+
+
+## If distobution is Arch based
+
+if [ -x "/usr/bin/pacman" ]
+then
+
+
+      ## Run the Arch version of the update command.
+	sudo pacman -Syyua && sudo pacman -R $(pacman -Qdtq) &&  cp -vf /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup && sudo pacman-mirrors -g
+
+fi
+
+
+## If distobution is Ubuntu/Debian based 
+
+if [ -x "/usr/bin/apt-get" ]
+then
+
+
+cd /etc 
+
+
+echo "Beginning Back up of Repo Scources List......."
+sleep 5
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup
+
+echo "Done Backing up Repo Scorces List............."
+sleep 3
+
+echo "Beginning Updating Procedures........."
+sleep 7
+sudo apt-get update 
+
+
+echo "Beginning Upgrading Procedures........"
+sleep 5
+sudo apt-get upgrade -y
+
+
+echo "Beginning Distribution Upgrading Procedures......."
+sleep 5
+sudo apt-get dist-upgrade -y
+
+
+echo "Beginning Cleaning and Removing Procedures......."
+sleep 5
+
+
+sudo apt-get -f install -y && sudo apt-get autoremove -y && sudo apt-get autoclean -y
+
+fi
+
+clear
+
+
+echo "Now that you are done please dont for get to visit www.cupoflinux.com 
+Thank You ...to all my COL members for helping me test this script 
+The Seeker"
+
+sleep 5
+
+
+
+clear
